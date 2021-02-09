@@ -7,6 +7,7 @@ import com.example.audit.core.fire.StateMachineFactory;
 import com.example.audit.core.fire.TransactionContext;
 import com.example.audit.service.audit.AuditService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +17,8 @@ import javax.annotation.Resource;
 @RestController
 public class SubmitController
 {
-    @Resource
-    AuditService auditService;
+    @Autowired
+    private AuditService auditService;
 
     @RequestMapping("/submit")
     public String submit(String bookId){
@@ -29,7 +30,9 @@ public class SubmitController
         //塞入图书id创建审核记录
         transactionContext.setData(bookId,"1");
         StateMachineFactory.getStateMachine("LEAVE_PERMIT").fire(AuditEvent.SUBMIT_AUDIT, transactionContext);
-
+        //获取图书Id,创建插入审核记录
+        /*String bookId = (String)context.getData("bookId");*/
+        //auditService.submit(bookId);
         return null;
     }
 }

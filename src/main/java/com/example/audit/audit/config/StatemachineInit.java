@@ -5,6 +5,10 @@ import com.example.audit.core.config.Handler;
 import com.example.audit.core.fire.StateMachine;
 import com.example.audit.core.fire.StateMachineConfig;
 import com.example.audit.core.fire.StateMachineFactory;
+import com.example.audit.service.audit.AuditService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Resource;
 
 /**
  * Created by jetty on 2019/7/31.
@@ -14,12 +18,13 @@ import com.example.audit.core.fire.StateMachineFactory;
  */
 public class StatemachineInit
 {
+    @Autowired
+    private AuditService auditService;
 
     //初始化状态机
     public static  void init(){
         //支持多状态机 这里以请假为例，可以支持多种
         StateMachineFactory.register("LEAVE_PERMIT",buildLeavePermitStateMachine());
-
     }
 
     private static StateMachine buildLeavePermitStateMachine() {

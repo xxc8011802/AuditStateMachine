@@ -40,8 +40,29 @@ public class AuditServiceImpl implements AuditService
     @Override
     public boolean submit(String bookId)
     {
+        Date date = new Date();
+        AuditBookInfoDO auditBookInfoDO = new AuditBookInfoDO();
+        auditBookInfoDO.setBookIdCenter(bookId);
+        auditBookInfoDO.setAuditState(1);
+        auditBookInfoDO.setReverseState(0);
+        auditBookInfoDO.setSubmitTime(date);
+        //图书审核记录插入表
+        auditBookInfoMapper.insertAuditBookByBookId(auditBookInfoDO);
+        //查询图书关联信息表
+        return true;
+    }
 
-
+    /**
+     * 更新审核记录
+     */
+    public boolean update(String bookId)
+    {
+        Date date = new Date();
+        AuditBookInfoDO auditBookInfoDO = new AuditBookInfoDO();
+        auditBookInfoDO.setBookIdCenter(bookId);
+        auditBookInfoDO.setAuditState(2);
+        //图书审核记录插入表
+        auditBookInfoMapper.updateAuditBookByBookId(auditBookInfoDO);
         //查询图书关联信息表
         return true;
     }

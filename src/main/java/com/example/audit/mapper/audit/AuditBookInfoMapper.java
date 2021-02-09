@@ -3,8 +3,6 @@ package com.example.audit.mapper.audit;
 import com.example.audit.DO.AuditBookInfoDO;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 /**
  * 审核接口
  */
@@ -31,7 +29,15 @@ public interface AuditBookInfoMapper
      *
      * @param auditBookInfoDO 审核记录信息
      * @return 图书审核记录
-     *//*
-    void insertAuditBookByBookId(@Param("auditBookInfoDO") AuditBookInfoDO auditBookInfoDO);*/
+     */
+    void insertAuditBookByBookId(@Param("auditBookInfoDO") AuditBookInfoDO auditBookInfoDO);
+
+    /**
+     * 更新审核记录
+     *
+     * @param auditBookInfoDO 审核记录信息
+     * @return 图书审核记录
+     */
+    void updateAuditBookByBookId(@Param("auditBookInfoDO") AuditBookInfoDO auditBookInfoDO);
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.migu.ereading.content.center.backend.mapper.audit.AuditBookInfoMapper">
+<mapper namespace="com.example.audit.mapper.audit.AuditBookInfoMapper">
 
     <resultMap type="com.example.audit.DO.AuditBookInfoDO" id="AuditBookInfoDOResult">
-        <id property="id" column="user_id"/>
+        <id property="id" column="id"/>
         <result property="bookIdCenter" column="bookid_center"/>
         <result property="bookIdMigu" column="bookid_migu"/>
         <result property="auditorFirst" column="auditor_first"/>
@@ -16,51 +16,18 @@
         <result property="finalResult" column="final_result"/>
     </resultMap>
 
-<!--    <select id="selectAuditBookInfoList" resultMap="AuditBookInfoDOResult">
-        select ab.id,ab.bookid_center,ab.bookid_migu,ab.auditor_first,ab.auditor_review,ab.audit_state,ab.submit_time,ab.audit_result_enum,
-         ab.audit_result_id,ab.reverse_state,ab.final_result,
-         b.name,b.type,
-         a.name,a.pen_name,
-         ar.audit_id,ar.audit_node,ar.audit_type,ar.audit_type,ar.audit_suggest,ar.gmt_create from audit_book_info ab
-         left join book b on ab.bookid_center=b.id
-         left join author a on b.author_id = a.id
-         left join audit_result_record ar on ab.audit_result_id=ar.id
-         where 1=1
-         <if test="auditBookInfoDO.auditState != null and auditBookInfoDO.auditState != ''">
-            AND ab.audit_state  =  #{auditBookInfoDO.auditState}
-        </if>
-        <if test="auditBookInfoDO.reverseState != null and auditBookInfoDO.reverseState != ''">
-            AND ab.audit_state  =  #{auditBookInfoDO.reverseState}
-        </if>
-        <if test="auditBookInfoDO.book != null">
-        <if test="auditBookInfoDO.book.name != null and auditBookInfoDO.book.name != ''">
-            AND b.name  like  concat('%', #{auditBookInfoDO.book.name}, '%')
-        </if>
-        </if>
-        <if test="auditBookInfoDO.author != null">
-            <if test="auditBookInfoDO.author.name != null and auditBookInfoDO.author.name != ''">
-                AND a.name  like  concat('%', #{auditBookInfoDO.author.name}, '%')
-            </if>
-            <if test="auditBookInfoDO.author.penName != null and auditBookInfoDO.author.penName != ''">
-                AND a.pen_name  like  concat('%', #{auditBookInfoDO.author.penName}, '%')
-            </if>
-        </if>
-    </select>
-
-    <select id="selectAuditBookByBookId" resultMap="AuditBookInfoDOResult" parameterType="string">
-         select ab.id,ab.bookid_center,ab.bookid_migu,ab.auditor_first,ab.auditor_review,ab.audit_state,ab.submit_time,ab.audit_result_enum,
-         ab.audit_result_id,ab.reverse_state,ab.final_result from audit_book_info ab where ab.bookid_center=#{bookId,jdbcType=VARCHAR}
-    </select>
-
-    <insert id="insertAuditBookByBookId"  parameterType="com.migu.ereading.content.center.backend.entity.DO.AuditBookInfoDO">
-         insert into audit_book_info (bookid_center,create_by,audit_state,submit_time,reverse_state,gmt_create,gmt_modified,update_by)
-         values(#{auditBookInfoDO.bookIdCenter},#{auditBookInfoDO.createBy},#{auditBookInfoDO.auditState},#{auditBookInfoDO.submitTime},
-         #{auditBookInfoDO.reverseState},#{auditBookInfoDO.gmtCreate},#{auditBookInfoDO.gmtModified},#{auditBookInfoDO.updateBy})
+    <insert id="insertAuditBookByBookId"  parameterType="com.example.audit.DO.AuditBookInfoDO">
+         insert into audit_book_info (bookid_center,audit_state,submit_time,reverse_state)
+         values(#{auditBookInfoDO.bookIdCenter},#{auditBookInfoDO.auditState},#{auditBookInfoDO.submitTime},
+         #{auditBookInfoDO.reverseState})
     </insert>
+
+    <update id="updateAuditBookByBookId"  parameterType="com.example.audit.DO.AuditBookInfoDO">
+         update audit_book_info set audit_state=#{auditBookInfoDO.auditState} where bookid_center = #{auditBookInfoDO.bookIdCenter}
+    </update>
 
     <sql id="selectMenuVo">
         select c.id, c.book_id, c.order, c.name, c.file_url, c.gmt_create
 		from chapter c
-    </sql>-->
-
+    </sql>
 </mapper>
