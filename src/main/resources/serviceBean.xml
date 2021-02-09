@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="statemachineInit" class="com.example.auditdemo.audit.config.StatemachineInit" init-method="init"></bean>
+    <bean id="statemachineInit" class="com.example.audit.audit.config.StatemachineInit" init-method="init"></bean>
 
 </beans>
