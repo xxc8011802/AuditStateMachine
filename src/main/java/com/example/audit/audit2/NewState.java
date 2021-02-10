@@ -1,4 +1,4 @@
-package com.example.audit2;
+package com.example.audit.audit2;
 
 public class NewState extends AuditRecordState
 {
@@ -11,16 +11,16 @@ public class NewState extends AuditRecordState
     @Override
     public void create()
     {
-        System.out.println("已新建审核记录，不能再创建相同审核记录");
+        System.out.println("新建审核记录");
+        this.auditRecord.assign();
     }
 
     @Override
     public void assign()
     {
-        // 1、变化为分配状态
+        System.out.println("等待审核分配");
+        // 1、变化为待分配状态
         this.auditRecord.setState(auditRecord.getAssignState());
-        // 2、执行分配
-        this.auditRecord.assign();
     }
 
     @Override

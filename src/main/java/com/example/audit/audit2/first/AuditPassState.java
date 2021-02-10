@@ -1,7 +1,7 @@
-package com.example.audit2.first;
+package com.example.audit.audit2.first;
 
-import com.example.audit2.AuditRecord;
-import com.example.audit2.AuditRecordState;
+import com.example.audit.audit2.AuditRecord;
+import com.example.audit.audit2.AuditRecordState;
 
 public class AuditPassState extends AuditRecordState
 {

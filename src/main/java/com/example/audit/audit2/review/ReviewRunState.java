@@ -1,7 +1,7 @@
-package com.example.audit2.review;
+package com.example.audit.audit2.review;
 
-import com.example.audit2.AuditRecord;
-import com.example.audit2.AuditRecordState;
+import com.example.audit.audit2.AuditRecord;
+import com.example.audit.audit2.AuditRecordState;
 
 public class ReviewRunState extends AuditRecordState
 {
@@ -25,7 +25,7 @@ public class ReviewRunState extends AuditRecordState
     @Override
     public void audit()
     {
-        System.out.println("进行复审");
+        System.out.println("等待复审");
     }
 
     @Override

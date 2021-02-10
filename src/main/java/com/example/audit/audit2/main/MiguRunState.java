@@ -1,11 +1,11 @@
-package com.example.audit2.first;
+package com.example.audit.audit2.main;
 
-import com.example.audit2.AuditRecord;
-import com.example.audit2.AuditRecordState;
+import com.example.audit.audit2.AuditRecord;
+import com.example.audit.audit2.AuditRecordState;
 
-public class AuditRunState extends AuditRecordState
+public class MiguRunState extends AuditRecordState
 {
-    public AuditRunState(AuditRecord auditRecord)
+    public MiguRunState(AuditRecord auditRecord)
     {
         super(auditRecord);
     }
@@ -25,14 +25,14 @@ public class AuditRunState extends AuditRecordState
     @Override
     public void audit()
     {
-        System.out.println("进行初审");
+        System.out.println("等待主站审核");
     }
 
     @Override
     public void pass(String condition)
     {
-        // 1、变化为初审通过状态
-        this.auditRecord.setState(auditRecord.getAuditPassState());
+        // 1、变化为主站审核通过状态
+        this.auditRecord.setState(auditRecord.getMiguPassState());
         // 2、审核通过
         this.auditRecord.pass(condition);
     }

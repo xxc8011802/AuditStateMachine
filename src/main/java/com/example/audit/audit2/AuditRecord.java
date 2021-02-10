@@ -1,19 +1,23 @@
-package com.example.audit2;
+package com.example.audit.audit2;
 
-import com.example.audit2.first.AuditRunState;
-import com.example.audit2.first.AuditPassState;
-import com.example.audit2.main.MiguPassState;
-import com.example.audit2.main.MiguRunState;
-import com.example.audit2.review.ReviewPassState;
-import com.example.audit2.review.ReviewRunState;
+import com.example.audit.audit2.assign.AssignFinState;
+import com.example.audit.audit2.assign.AssignState;
+import com.example.audit.audit2.first.AuditRunState;
+import com.example.audit.audit2.first.AuditPassState;
+import com.example.audit.audit2.main.MiguPassState;
+import com.example.audit.audit2.main.MiguRunState;
+import com.example.audit.audit2.review.ReviewPassState;
+import com.example.audit.audit2.review.ReviewRunState;
 
 public class AuditRecord
 {
     //定义出审核单的状态
     //新建
     private AuditRecordState newState;
-    //已分配
+    //待分配
     private AuditRecordState assignState;
+    //已分配
+    private AuditRecordState assignFinState;
     //初审中
     private AuditRecordState auditRunState;
     //初审通过
@@ -39,6 +43,7 @@ public class AuditRecord
     public AuditRecord() {
         newState = new NewState(this);
         assignState = new AssignState(this);
+        assignFinState = new AssignFinState(this);
         auditRunState = new AuditRunState(this);
         auditPassState = new AuditPassState(this);
         reviewRunState = new ReviewRunState(this);
@@ -109,6 +114,11 @@ public class AuditRecord
     public AuditRecordState getAssignState()
     {
         return assignState;
+    }
+
+    public AuditRecordState getAssignFinState()
+    {
+        return assignFinState;
     }
 
     public AuditRecordState getAuditRunState()

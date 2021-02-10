@@ -3,6 +3,8 @@ package com.example.audit.controller;
 import com.example.audit.audit.config.AuditContextConstans;
 import com.example.audit.audit.config.AuditEvent;
 import com.example.audit.audit.config.AuditState;
+import com.example.audit.audit2.AuditRecord;
+import com.example.audit.audit2.NewState;
 import com.example.audit.core.fire.StateMachineFactory;
 import com.example.audit.core.fire.TransactionContext;
 import com.example.audit.service.audit.AuditService;
@@ -24,6 +26,7 @@ public class SubmitController
     public String submit(String bookId){
 
         log.info("作家提交审核");
+/*
         TransactionContext transactionContext=new TransactionContext();
         //设置当前提交状态
         transactionContext.setData(AuditContextConstans.CURRENT_STATE, AuditState.SUBMIT_AUDIT);
@@ -31,8 +34,16 @@ public class SubmitController
         transactionContext.setData(bookId,"1");
         StateMachineFactory.getStateMachine("LEAVE_PERMIT").fire(AuditEvent.SUBMIT_AUDIT, transactionContext);
         //获取图书Id,创建插入审核记录
-        /*String bookId = (String)context.getData("bookId");*/
+        */
+/*String bookId = (String)context.getData("bookId");*//*
+
         //auditService.submit(bookId);
+*/
+        AuditRecord auditRecord = new AuditRecord();
+        //记录新建
+        auditRecord.setState(new NewState(auditRecord));
+        auditRecord.create();
+        auditRecord.assign();
         return null;
     }
 }

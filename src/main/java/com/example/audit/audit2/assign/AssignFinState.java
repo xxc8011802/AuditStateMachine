@@ -1,8 +1,11 @@
-package com.example.audit2;
+package com.example.audit.audit2.assign;
 
-public class AssignState extends AuditRecordState
+import com.example.audit.audit2.AuditRecord;
+import com.example.audit.audit2.AuditRecordState;
+
+public class AssignFinState extends AuditRecordState
 {
-    public AssignState(AuditRecord auditRecord)
+    public AssignFinState(AuditRecord auditRecord)
     {
         super(auditRecord);
     }
@@ -16,7 +19,9 @@ public class AssignState extends AuditRecordState
     @Override
     public void assign()
     {
-        System.out.println("进行审核人员分配");
+        System.out.println("审核分配通过");
+        this.auditRecord.audit();
+        //this.auditRecord.setState(auditRecord.getAssignFinState());
     }
 
     @Override
