@@ -1,4 +1,4 @@
-package com.example.audit.audit2;
+package com.example.audit2.state;
 
 public abstract class AuditRecordState
 {

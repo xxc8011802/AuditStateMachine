@@ -1,7 +1,8 @@
-package com.example.audit.audit2.first;
+package com.example.audit2.state.first;
 
-import com.example.audit.audit2.AuditRecord;
-import com.example.audit.audit2.AuditRecordState;
+import com.example.audit2.constants.StateEnum;
+import com.example.audit2.state.AuditRecord;
+import com.example.audit2.state.AuditRecordState;
 
 public class AuditPassState extends AuditRecordState
 {
@@ -35,13 +36,15 @@ public class AuditPassState extends AuditRecordState
         //安排了复审跳转到复审状态
         if(condition.equals("1")){
             // 1、变化为复审中状态
-            this.auditRecord.setState(auditRecord.getReviewRunState());
+            //this.auditRecord.setState(auditRecord.getReviewRunState());
+            this.auditRecord.setState(StateEnum.reviewRunState);
             // 2、执行复审
             this.auditRecord.audit();
         }else{
             //未安排复审跳转主站审核流程
             // 1、变化为复审中状态
-            this.auditRecord.setState(auditRecord.getMiguRunState());
+            //this.auditRecord.setState(auditRecord.getMiguRunState());
+            this.auditRecord.setState(StateEnum.miguRunState);
             // 2、执行复审
             this.auditRecord.audit();
         }

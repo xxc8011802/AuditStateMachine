@@ -1,7 +1,7 @@
-package com.example.audit.audit2.main;
+package com.example.audit2.state.main;
 
-import com.example.audit.audit2.AuditRecord;
-import com.example.audit.audit2.AuditRecordState;
+import com.example.audit2.state.AuditRecord;
+import com.example.audit2.state.AuditRecordState;
 
 public class MiguPassState extends AuditRecordState
 {

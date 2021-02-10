@@ -1,18 +1,19 @@
-package com.example.audit.audit2;
+package com.example.audit2.state;
 
-import com.example.audit.audit2.assign.AssignFinState;
-import com.example.audit.audit2.assign.AssignState;
-import com.example.audit.audit2.first.AuditRunState;
-import com.example.audit.audit2.first.AuditPassState;
-import com.example.audit.audit2.main.MiguPassState;
-import com.example.audit.audit2.main.MiguRunState;
-import com.example.audit.audit2.review.ReviewPassState;
-import com.example.audit.audit2.review.ReviewRunState;
+import com.example.audit2.constants.StateEnum;
+import com.example.audit2.state.assign.AssignFinState;
+import com.example.audit2.state.assign.AssignState;
+import com.example.audit2.state.first.AuditRunState;
+import com.example.audit2.state.first.AuditPassState;
+import com.example.audit2.state.main.MiguPassState;
+import com.example.audit2.state.main.MiguRunState;
+import com.example.audit2.state.review.ReviewPassState;
+import com.example.audit2.state.review.ReviewRunState;
 
 public class AuditRecord
 {
     //定义出审核单的状态
-    //新建
+    /*//新建
     private AuditRecordState newState;
     //待分配
     private AuditRecordState assignState;
@@ -31,8 +32,10 @@ public class AuditRecord
     //主站审核通过
     private AuditRecordState miguPassState;
     //已驳回
-    private AuditRecordState rejectState;
+    private AuditRecordState rejectState;*/
 
+
+    private StateEnum state;
 
     // 定义当前审核记录状态
     private AuditRecordState currentState;
@@ -41,7 +44,7 @@ public class AuditRecord
      * 构造方法
      */
     public AuditRecord() {
-        newState = new NewState(this);
+        /*newState = new NewState(this);
         assignState = new AssignState(this);
         assignFinState = new AssignFinState(this);
         auditRunState = new AuditRunState(this);
@@ -50,7 +53,7 @@ public class AuditRecord
         reviewPassState = new ReviewPassState(this);
         miguRunState = new MiguRunState(this);
         miguPassState = new MiguPassState(this);
-        rejectState = new RejectState(this);
+        rejectState = new RejectState(this);*/
     }
 
 
@@ -100,13 +103,13 @@ public class AuditRecord
      *
      * @param state
      */
-    public void setState(AuditRecordState state) {
-        this.currentState = state;
+    public void setState(StateEnum state) {
+        this.state = state;
     }
 
     // ###################获取审核记录的全部状态####################
 
-    public AuditRecordState getNewState()
+    /*public AuditRecordState getNewState()
     {
         return newState;
     }
@@ -154,7 +157,7 @@ public class AuditRecord
     public AuditRecordState getMiguPassState()
     {
         return miguPassState;
-    }
+    }*/
 
     public AuditRecordState getCurrentState()
     {

@@ -1,7 +1,8 @@
-package com.example.audit.audit2.assign;
+package com.example.audit2.state.assign;
 
-import com.example.audit.audit2.AuditRecord;
-import com.example.audit.audit2.AuditRecordState;
+import com.example.audit2.constants.StateEnum;
+import com.example.audit2.state.AuditRecord;
+import com.example.audit2.state.AuditRecordState;
 
 public class AssignState extends AuditRecordState
 {
@@ -20,7 +21,8 @@ public class AssignState extends AuditRecordState
     public void assign()
     {
         System.out.println("进行审核分配");
-        this.auditRecord.setState(auditRecord.getAssignFinState());
+        //this.auditRecord.setState(auditRecord.getAssignFinState());
+        this.auditRecord.setState(StateEnum.assignFinState);
         // 2、执行分配
         this.auditRecord.assign();
     }

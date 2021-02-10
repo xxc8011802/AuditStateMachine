@@ -1,19 +1,12 @@
 package com.example.audit.controller;
 
-import com.example.audit.audit.config.AuditContextConstans;
-import com.example.audit.audit.config.AuditEvent;
-import com.example.audit.audit.config.AuditState;
-import com.example.audit.audit2.AuditRecord;
-import com.example.audit.audit2.NewState;
-import com.example.audit.core.fire.StateMachineFactory;
-import com.example.audit.core.fire.TransactionContext;
+import com.example.audit2.state.AuditRecord;
+import com.example.audit2.state.NewState;
 import com.example.audit.service.audit.AuditService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 @Slf4j
 @RestController
@@ -39,11 +32,6 @@ public class SubmitController
 
         //auditService.submit(bookId);
 */
-        AuditRecord auditRecord = new AuditRecord();
-        //记录新建
-        auditRecord.setState(new NewState(auditRecord));
-        auditRecord.create();
-        auditRecord.assign();
         return null;
     }
 }

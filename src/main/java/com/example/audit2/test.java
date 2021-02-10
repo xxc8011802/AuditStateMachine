@@ -1,4 +1,8 @@
-package com.example.audit.audit2;
+package com.example.audit2;
+
+import com.example.audit2.constants.StateEnum;
+import com.example.audit2.state.AuditRecord;
+import com.example.audit2.state.NewState;
 
 public class test
 {
@@ -6,7 +10,7 @@ public class test
     {
         AuditRecord auditRecord = new AuditRecord();
         //记录新建
-        auditRecord.setState(new NewState(auditRecord));
+        auditRecord.setState(StateEnum.newState);
         //作家创建后等待分配
         auditRecord.create();
         System.out.println("================================");

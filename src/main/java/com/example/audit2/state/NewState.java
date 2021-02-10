@@ -1,4 +1,6 @@
-package com.example.audit.audit2;
+package com.example.audit2.state;
+
+import com.example.audit2.constants.StateEnum;
 
 public class NewState extends AuditRecordState
 {
@@ -19,8 +21,9 @@ public class NewState extends AuditRecordState
     public void assign()
     {
         System.out.println("等待审核分配");
-        // 1、变化为待分配状态
-        this.auditRecord.setState(auditRecord.getAssignState());
+        // 1、变化为待分配状态,状态扭转
+        //this.auditRecord.setState(auditRecord.getAssignState());
+        this.auditRecord.setState(StateEnum.assignState);
     }
 
     @Override

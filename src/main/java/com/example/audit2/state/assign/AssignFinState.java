@@ -1,7 +1,8 @@
-package com.example.audit.audit2.assign;
+package com.example.audit2.state.assign;
 
-import com.example.audit.audit2.AuditRecord;
-import com.example.audit.audit2.AuditRecordState;
+import com.example.audit2.constants.StateEnum;
+import com.example.audit2.state.AuditRecord;
+import com.example.audit2.state.AuditRecordState;
 
 public class AssignFinState extends AuditRecordState
 {
@@ -28,7 +29,8 @@ public class AssignFinState extends AuditRecordState
     public void audit()
     {
         // 1、变化为初审中状态
-        this.auditRecord.setState(auditRecord.getAuditRunState());
+        //this.auditRecord.setState(auditRecord.getAuditRunState());
+        this.auditRecord.setState(StateEnum.auditRunState);
         // 2、执行初审
         this.auditRecord.audit();
     }
