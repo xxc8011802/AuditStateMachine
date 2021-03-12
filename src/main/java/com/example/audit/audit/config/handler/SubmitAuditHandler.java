@@ -33,7 +33,7 @@ public class SubmitAuditHandler implements Handler
         //获取图书Id,新建一条审核记录
         String bookId = (String)context.getData("bookId");
         //AuditServiceImpl AuditServiceImpl = new AuditServiceImpl();
-        auditServiceImpl.submit("111");
+        auditServiceImpl.submit(bookId);
         //-----------------------------------------//
         //提交完后是自动去触发分配事件
         stateMachine.fire(AuditEvent.AUDIT_ASSIGN,context);
