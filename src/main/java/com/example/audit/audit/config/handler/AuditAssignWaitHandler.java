@@ -5,13 +5,17 @@ import com.example.audit.audit.config.bean.AuditPermit;
 import com.example.audit.core.config.Handler;
 import com.example.audit.core.fire.StateMachine;
 import com.example.audit.core.fire.TransactionContext;
+import com.example.audit.mapper.audit.AuditBookInfoMapper;
 import com.example.audit.service.audit.impl.AuditServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by jetty on 2019/7/31.
  */
 @Slf4j
+@Component
 public class AuditAssignWaitHandler implements Handler{
 
     public void handle(TransactionContext context, StateMachine stateMachine) {

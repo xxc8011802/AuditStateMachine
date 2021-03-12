@@ -2,10 +2,12 @@ package com.example.audit.mapper.audit;
 
 import com.example.audit.DO.AuditBookInfoDO;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 /**
  * 审核接口
  */
+@Component
 public interface AuditBookInfoMapper
 {
 /*    *//**

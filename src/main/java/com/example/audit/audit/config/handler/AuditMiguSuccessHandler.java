@@ -6,11 +6,13 @@ import com.example.audit.core.config.Handler;
 import com.example.audit.core.fire.StateMachine;
 import com.example.audit.core.fire.TransactionContext;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by jetty on 2019/7/31.
  */
 @Slf4j
+@Component
 public class AuditMiguSuccessHandler implements Handler
 {
     public void handle(TransactionContext context, StateMachine stateMachine) {

@@ -6,7 +6,7 @@ import com.example.audit.audit.config.bean.AuditPermit;
 import com.example.audit.core.config.Handler;
 import com.example.audit.core.fire.StateMachine;
 import com.example.audit.core.fire.TransactionContext;
-import com.example.audit.service.audit.AuditService;
+import com.example.audit.mapper.audit.AuditBookInfoMapper;
 import com.example.audit.service.audit.impl.AuditServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,11 @@ import org.springframework.stereotype.Component;
  * Created by jetty on 2019/7/31.
  */
 @Slf4j
+@Component
 public class SubmitAuditHandler implements Handler
 {
     @Autowired
-    private AuditService auditService;
+    AuditServiceImpl auditServiceImpl;
 
     public void handle(TransactionContext context, StateMachine stateMachine) {
         AuditPermit auditPermit=new AuditPermit();
@@ -31,8 +32,8 @@ public class SubmitAuditHandler implements Handler
         //-----------------------------------------//
         //获取图书Id,新建一条审核记录
         String bookId = (String)context.getData("bookId");
-        AuditServiceImpl AuditServiceImpl = new AuditServiceImpl();
-        AuditServiceImpl.submit(bookId);
+        //AuditServiceImpl AuditServiceImpl = new AuditServiceImpl();
+        auditServiceImpl.submit("111");
         //-----------------------------------------//
         //提交完后是自动去触发分配事件
         stateMachine.fire(AuditEvent.AUDIT_ASSIGN,context);
